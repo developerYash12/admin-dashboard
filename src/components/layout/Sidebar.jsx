@@ -68,6 +68,16 @@ const Sidebar = () => {
           >
             Todo
           </NavLink>
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+            `block p-3 rounded-lg ${
+              isActive ? "bg-slate-700" : "hover:bg-slate-700"
+            }`
+          }
+          >
+            Logout
+          </NavLink>
       </ul>
     </div>
   );

@@ -8,34 +8,51 @@ import PostEdit from "./components/posts/post-edit";
 import UserShow from "./features/dashboard/user-view";
 import Todo from "./components/todo/Todo";
 import Comments from "./components/comments/comments";
+import Login from "./components/login/Login";
 
-// import { ThemeProvider } from "./context/ThemeContext";
 function App() {
 
 
   return (
+   
     <>
-    <div className="flex">
-     <Sidebar />
+  <Routes>
 
-     <div className="flex-1 p-5 ml-64 flex flex-col">
-     <Navbar />
-     <div className="mt-5"></div>
-     <Routes>
-          <Route path="/" element={<Navigate to="/dashboard" />} /> 
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/users" element={<UserTable />} />
-          <Route path="/user/:id" element={<UserShow/>} />
-          <Route path="/posts" element={<Posts />} />
-          <Route path="/postEdit/:id" element={< PostEdit/>} />
-          <Route path="/comment" element={<Comments />} />
-          <Route path="/todo" element={< Todo/>} />
-        </Routes>
-     </div>
+    <Route path="/login" element={<Login />} />
 
-    </div>
-    
-    </>
+    <Route
+      path="*"
+      element={
+        <div className="flex min-h-screen bg-gray-100">
+
+          <Sidebar />
+
+          <div className="flex-1 p-5 ml-64 flex flex-col">
+
+            <Navbar />
+
+            <main className="p-6">
+              <Routes>
+                <Route
+                  path="/"
+                  element={<Navigate to="/dashboard" replace />}
+                />
+
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/users" element={<UserTable />} />
+                <Route path="/user/:id" element={<UserShow />} />
+                <Route path="/posts" element={<Posts />} />
+                <Route path="/postEdit/:id" element={<PostEdit />} />
+                <Route path="/comment" element={<Comments />} />
+                <Route path="/todo" element={<Todo />} />
+              </Routes>
+            </main>
+          </div>
+        </div>
+      }
+    />
+  </Routes>
+</>
   )
 }
 
