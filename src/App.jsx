@@ -9,7 +9,7 @@ import UserShow from "./features/dashboard/user-view";
 import Todo from "./components/todo/Todo";
 import Comments from "./components/comments/comments";
 import Login from "./components/login/Login";
-
+import ProtectedRoute from "./routes/ProtectedRoute";
 function App() {
 
 
@@ -38,13 +38,16 @@ function App() {
                   element={<Navigate to="/dashboard" replace />}
                 />
 
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/users" element={<UserTable />} />
-                <Route path="/user/:id" element={<UserShow />} />
-                <Route path="/posts" element={<Posts />} />
-                <Route path="/postEdit/:id" element={<PostEdit />} />
-                <Route path="/comment" element={<Comments />} />
-                <Route path="/todo" element={<Todo />} />
+                <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>} />
+                <Route path="/users" element={<ProtectedRoute> <UserTable /></ProtectedRoute>} />
+                <Route path="/user/:id" element={<ProtectedRoute> </ProtectedRoute>} />
+                <Route path="/posts" element={<ProtectedRoute><Posts /> <UserShow /></ProtectedRoute>} />
+                <Route path="/postEdit/:id" element={<ProtectedRoute> <PostEdit /></ProtectedRoute>} />
+                <Route path="/comment" element={<ProtectedRoute> <Comments /></ProtectedRoute>} />
+                <Route path="/todo" element={<ProtectedRoute><Todo/> </ProtectedRoute>} />
               </Routes>
             </main>
           </div>

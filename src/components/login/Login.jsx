@@ -1,12 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import React from "react";
 const login = () => {
+  const [state, setState] = React.useState("login")
+
+  const [formData, setFormData] = React.useState({
+      name: '',
+      email: '',
+      password: ''
+  })
     const navigate = useNavigate();
     const handleLogin = () => {
 
         if (
-          email === "admin@gmail.com" &&
-          password === "123456"
+          formData.email === "test@gmail.com" &&
+          formData.password === "123456"
         ) {
       
           localStorage.setItem("token", "admin-token");
@@ -17,13 +24,7 @@ const login = () => {
           alert("Invalid credentials");
         }
       };
-    const [state, setState] = React.useState("login")
-
-    const [formData, setFormData] = React.useState({
-        name: '',
-        email: '',
-        password: ''
-    })
+   
 
     const handleChange = (e) => {
         const { name, value } = e.target

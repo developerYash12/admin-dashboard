@@ -1,6 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 const Sidebar = () => {
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    navigate("/login");
+  }
   return (
     <div className="h-screen w-64 bg-slate-900 text-white p-5 fixed">
    
@@ -75,6 +80,7 @@ const Sidebar = () => {
               isActive ? "bg-slate-700" : "hover:bg-slate-700"
             }`
           }
+          onClick={handleLogout}
           >
             Logout
           </NavLink>
